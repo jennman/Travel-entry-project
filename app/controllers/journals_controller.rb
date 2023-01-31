@@ -1,5 +1,11 @@
 class JournalsController < ApplicationController
 
+
+    def index
+        render json: Journal.all
+    end
+
+
     def create 
         new_journal = Journal.new(journal_create_params)
         
@@ -14,7 +20,7 @@ class JournalsController < ApplicationController
     private
 
     def journal_create_params
-        params.permit(:date, :suggestions, :descriptions)
+        params.permit(:date, :suggestions, :descriptions, :location_id, :user_id)
 # if dont have wrap params
         # params.require(:user).permit(:username, :password, :email)
     end
